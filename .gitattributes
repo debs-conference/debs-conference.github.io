@@ -1,0 +1,19 @@
+# Assume that we want effect of core.autocrlf auto in this case.
+* text=auto
+
+# typical website source files are text
+*.md text
+*.html text
+*.css text
+*.js text
+*.xml text
+*.php text
+*.svg text
+
+# binary image and font files should be binary
+*.png binary
+*.jpg binary
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
