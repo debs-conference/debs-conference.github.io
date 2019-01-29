@@ -149,7 +149,7 @@ We would like to thank <a href="https://www2.cs.fau.de/EN/staff/mutschler/index.
 <p style="text-align:center;"><b>v&#8217;x = |v| * vx * 1e-4 * 1e-6</b></p>
 <p>(vx in m/s is derived by |v| * 1e-10 * vx) and |a| (in μm/s&amp;sup2), ax, ay, az describe the absolute acceleration and its constituents in three dimensions (the acceleration in m/s&amp;sup2 is calculated similar to that of the velocity). The acceleration does not include gravity, i.e. |a| is zero when the ball is at a fixed position and not 9.81 m/s&amp;sup2).</p>
 <p style="text-align:center;"><br />
-<img src="soccer.png" width="80%" /><br/><i>Figure 1: Playing field and its dimensions</i></p>
+<img src="soccer.png" style="width:80%;" alt="playing field and its dimensions" /><br/><i>Figure 1: Playing field and its dimensions</i></p>
 <p>In addition to the sensor data we also provide a separate data stream for referee events, which includes the time when a game was paused and the time when a game was resumed. Moreover, referee events contain the time and player_ids for substitutions.</p>
 <p>The mapping between player ids and team ids as well as between sensor id and player id is provided in the metadata file.<br />
 The game, during which the data has been collected, was played on a half-size field with teams of seven players each. The game duration was two halves of thirty minutes each. We assume that the data arrives at the system under test without any delays, nor omissions.</p>
@@ -159,10 +159,10 @@ The game, during which the data has been collected, was played on a half-size fi
 <h5>Query 1 &#8211; Running Analysis</h5>
 <p>The goal of this query is to calculate the analysis of the running performance of each of the players currently participating in the game. The intensities are defined as: standing (0-1 km/h), trot (till 11 km/h), low speed run (till 14 km/h), medium speed run (till 17 km/h), high speed run (till 24 km/h), and sprint (faster than 24 km/h). Figure 2 shows the possible transitions between different states which need to be observed for the running analysis.</p>
 <p style="text-align: center;"><br />
-<img src="query1.png" width="100%" /><br/><i>Figure 2 &#8211; Transitions between running intensities for Query 1</i></p>
+<img src="query1.png" style="width:100%;" alt="Transitions between running intensities for Query 1" /><br/><i>Figure 2 &#8211; Transitions between running intensities for Query 1</i></p>
 <p>In order to accommodate for the noise in the raw velocity measurements, the actual speed of the run should be computed from all the individual speed norms of a player&#8217;s transmitters. Here you can see an example plot of the velocity of the ball:</p>
 <p style="text-align:center;"><br />
-<img src="ball_velocity.png" width="60%" /><br/><i>Figure 3 &#8211; Velocity of the ball over time</i></p>
+<img src="ball_velocity.png" style="width:60%" alt="Velocity of the ball over time" /><br/><i>Figure 3 &#8211; Velocity of the ball over time</i></p>
 <p>The running analysis query should return two classes of results: (1) current running statistics and (2) a set of aggregate running statistics. The current running statistics should be returned at a frequency of at most 50Hz and must contain following information:</p>
 <p style="text-align:center;"><b><br />
 ts_start, ts_stop, player_id, intensity, distance, speed<br />
@@ -177,7 +177,7 @@ ts, player_id, standing_time, standing_distance, trot_time, trot_distance, low_t
 <h5>Query 2 &#8211; Ball Possession</h5>
 <p>The goal of this query is to calculate the ball possession for each of the players as well as for whole team. A player (and thereby his respective team) can obtain the ball whenever the ball is in his proximity (less than one meter away &#8211; calculated as the distance between the ball sensor and the closest sensor of the player) and he hits (the ball acceleration peaks) it. The ball will stay in his possession until another player hits it, the ball leaves the field, or the game is stopped. The ball possession is calculated as time between the first ball contact (hit) and the last ball contact (hit). The ball may leave the player proximity and will still stay in his possession.</p>
 <p style="text-align:center;"><br />
-<img src="query2.png" width="80%" /><br/><i>Figure 4 &#8211; Ball possession states</i></p>
+<img src="query2.png" style="width:80%" alt="Ball possession states" /><br/><i>Figure 4 &#8211; Ball possession states</i></p>
 <p>A ball is hit if its (transmitter) distance from a player&#8217;s foot (transmitter) is less than 1 meter and its acceleration reaches a value of minimal 55 m/s&amp;sup2. This value depends heavily on the fitness of the players &#8211; values of up to 100 m/s&amp;sup2 are more suitable for professional games. It may be appropriate to apply a mean filter onto the acceleration values in order to get better detection performance.</p>
 <p>The ball position query should return two classes of results: (1) per player ball possession stream and (2) per team ball possession. The per player ball possession stream should contain following information:</p>
 <p style="text-align:center;"><b><br />
@@ -199,9 +199,9 @@ ts, player_id, cell_x1, cell_y1, cell_x2, cell_y2, percent_time_in_time_cell<br 
 <p>Below we provide suggestions for the implementation of the shot detection. However, we also allow alternative implementations that yield good results (i.e. closely resemble the result lists provided in <a href="http://lafayette.tosm.ttu.edu/debs2013/grandchallenge/referee-events.tar.gz">referee-events.tar.gz</a>).</p>
 <p>Figure 5 gives an overview of suggested states and transitions of the shot detection. A shot is detected if the player with id &lt;player_id&gt; hits the ball with a minimal acceleration of 55 m/s&amp;sup2, and the projected movement of the ball would cross the opponents&#8217; goal area within 1.5 seconds after the hit. The goal areas are defined as rectangles with the following coordinates:</p>
 <p></p>
-<p>Goal area team 1: x > 22578.5 and x < 29898.5, y = 33941.0, z < 2440.0
+<p><b>Goal area team 1: x &gt; 22578.5 and x &lt; 29898.5, y = 33941.0, z &lt; 2440.0
 <br />
-Goal area team 2: x > 22560.0 and x < 29880.0, y = -33968.0, z < 2440.0
+Goal area team 2: x &gt; 22560.0 and x &lt; 29880.0, y = -33968.0, z &lt; 2440.0
 </b></p><p></p>
 <p>Please note that the hit distorts the speed values of the ball. The data are preprocessed by a Kalman-filter and stabilize over time. The computation of the projection may take this into account. To allow for corrective measures we only require that the shot is detected at latest when the ball moved 1m away from the hit location.</p>
 <p>We leave it open in the challenge to which degree the projection considers the physics of a flying ball in the projection. A base-line solution that simply extrapolates the motion vector is acceptable. However, more accurate computations of the ball movement (e.g. considering gravity) would be appreciated.</p>
@@ -210,7 +210,7 @@ Goal area team 2: x > 22560.0 and x < 29880.0, y = -33968.0, z < 2440.0
 ts, player_id, x, y, z, |v|, vx, vy, vz, |a|, ax, ay, az<br />
 </b></p><p>The result stream should be updated with the frequency of the sensor data until an exit condition occurs. Exit conditions are (a) the ball leaves the field, or (c) the direction changes such that the goal area would no longer be hit.</p>
 <p style="text-align:center;"><br />
-<img src="query4.png" width="80%" /><br/><i>Figure 5 &#8211; Shot on goal states</i></p>
+<img src="query4.png" style="width:80%" alt="Shot on goal states" /><br/><i>Figure 5 &#8211; Shot on goal states</i></p>
 <h3>Frequently Asked Questions</h3>
 <p><b>Question 1:</b> The playing field is not a perfect rectangle. Is it allowed to approximate the field with a perfect rectangle in the queries?</p>
 <p>Answer 1: <i>Yes. We suggest to use the following coordinates if you opt for an approximation: (0,33965), (0,-33960),(52483,33965),(52483,-33960)</i></p>
