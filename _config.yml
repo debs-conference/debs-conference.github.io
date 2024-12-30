@@ -1,0 +1,14 @@
+title: "Distributed and Event-Based Systems"
+description: "Distributed and Event-Based Systems (DEBS) conference website"
+baseurl: "" # Leave blank for GitHub Pages
+url: "https://debs.org"
+theme: minima
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - Dockerfile
+  - docker-compose.yml
+  - Gemfile
