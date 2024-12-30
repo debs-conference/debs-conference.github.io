@@ -1,0 +1,20 @@
+{
+    "name": "Jekyll Dev Container",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rebornix.ruby",
+                "streetsidesoftware.code-spell-checker"
+            ]
+        }
+    },
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind"
+    ],
+    "postCreateCommand": "bundle exec jekyll serve --host 0.0.0.0 --port 4001 --livereload",
+    "remoteUser": "root"
+}
