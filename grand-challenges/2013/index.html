@@ -2,13 +2,13 @@
 layout: default
 title: "DEBS 2013 Grand Challenge: Soccer monitoring"
 ---
-		<p>The ACM DEBS 2013 Grand Challenge is the third in a series of challenges which seek to provide a common ground and evaluation criteria for a competition aimed at both research and industrial event-based systems. The goal of the Grand Challenge competition is to implement a solution to a problem provided by the Grand Challenge organizers.<br />
+		<p>The ACM DEBS 2013 Grand Challenge is the third in a series of challenges which seek to provide a common ground and evaluation criteria for a competition aimed at both research and industrial event-based systems. The goal of the Grand Challenge competition is to implement a solution to a problem provided by the Grand Challenge organizers.<br>
 The DEBS Grand Challenge series provides problems which are relevant to the industry at large. DEBS Grand Challenge problems allow for evaluation of event based systems using real-life data and queries.</p>
-<p>All DEBS 2013 Grand Challenge submissions must be composed of two parts: (1) a 6 page paper, in ACM SIG proceedings format, outlining the solution, highlighting its innovative aspects and presenting the evaluation and (2) a demonstration of the system &#8211; either in<br />
-the form of a video or a screencast. All submissions are subject to a peer review process. Authors of all accepted submissions will be invited to present their systems during the DEBS 2013 Conference. Upon the explicit consent from the challenge participants,<br />
+<p>All DEBS 2013 Grand Challenge submissions must be composed of two parts: (1) a 6 page paper, in ACM SIG proceedings format, outlining the solution, highlighting its innovative aspects and presenting the evaluation and (2) a demonstration of the system &#8211; either in<br>
+the form of a video or a screencast. All submissions are subject to a peer review process. Authors of all accepted submissions will be invited to present their systems during the DEBS 2013 Conference. Upon the explicit consent from the challenge participants,<br>
 	  authors solutions will be included in the global ranking with the winner of the Grand Challenge being announced and awarded during the conference banquet. The global ranking is based on the peer review process scores and the performance of the solution. The performance is based on the throughput and latency of the system under the assumption of result correctness.</p>
 <p>
-<img alt="IIS logo" src="iis_rgb.gif" style="float:left; margin-right:20px; margin-bottom:20px; width:20%" />
+<img alt="IIS logo" src="iis_rgb.gif" style="float:left; margin-right:20px; margin-bottom:20px; width:20%">
 We would like to thank <a href="https://www2.cs.fau.de/EN/staff/mutschler/index.html" target="_blank">Christopher Mutschler</a> and the <a href="http://www.iis.fraunhofer.de/en.html" target="_blank">Fraunhofer IIS</a> for provisioning the sensor data and for their help in preparing this year&#8217;s challenge.</p>
 <h4>Problem Description</h4>
 <p>With this year&#8217;s challenge, we seek to demonstrate the applicability of event-based systems to provide real-time complex analytics over high velocity sensor data along the example of analyzing a soccer game. The data for the DEBS 2013 Grand Challenge originates from a number of wireless sensors embedded in the shoes and a ball used during a soccer match and spans the whole duration of the game. The real-time analytics includes the continuous computation of statistics of relevance to spectators (ball possession, shots on goal) as well as trainers and team managers (running analysis of team members&#8217;).</p>
@@ -18,51 +18,51 @@ We would like to thank <a href="https://www2.cs.fau.de/EN/staff/mutschler/index.
 <p>where sid is a sensor id which produced the position event, ts is a timestamp in picoseconds, e.g.: 10753295594424116 (with the value of 10753295594424116 designating the start and 14879639146403495 the end of the game); x, y, z describe the position of the sensor in mm (the origin is the middle of a full size football field) ; |v| (in μm/s), vx, vy, vz describe direction by a vector with size of 10,000. Hence, the speed of the object in x-direction in SI-units (m/s) is calculated by</p>
 <p style="text-align:center;"><b>v&#8217;x = |v| * vx * 1e-4 * 1e-6</b></p>
 <p>(vx in m/s is derived by |v| * 1e-10 * vx) and |a| (in μm/s&amp;sup2), ax, ay, az describe the absolute acceleration and its constituents in three dimensions (the acceleration in m/s&amp;sup2 is calculated similar to that of the velocity). The acceleration does not include gravity, i.e. |a| is zero when the ball is at a fixed position and not 9.81 m/s&amp;sup2).</p>
-<p style="text-align:center;"><br />
-<img src="soccer.png" style="width:80%;" alt="playing field and its dimensions" /><br/><i>Figure 1: Playing field and its dimensions</i></p>
+<p style="text-align:center;"><br>
+<img src="soccer.png" style="width:80%;" alt="playing field and its dimensions"><br><i>Figure 1: Playing field and its dimensions</i></p>
 <p>In addition to the sensor data we also provide a separate data stream for referee events, which includes the time when a game was paused and the time when a game was resumed. Moreover, referee events contain the time and player_ids for substitutions.</p>
-<p>The mapping between player ids and team ids as well as between sensor id and player id is provided in the metadata file.<br />
+<p>The mapping between player ids and team ids as well as between sensor id and player id is provided in the metadata file.<br>
 The game, during which the data has been collected, was played on a half-size field with teams of seven players each. The game duration was two halves of thirty minutes each. We assume that the data arrives at the system under test without any delays, nor omissions.</p>
 <p>Raw sensor data for the game can be downloaded from: <a href="http://lafayette.tosm.ttu.edu/debs2013/grandchallenge/full-game.gz">here</a> (2.6 GB). All data has been aggregated is a single file and is sorted by time stamps. The video recording of the game (vertical view, static camera) can be downloaded from: <a href="http://lafayette.tosm.ttu.edu/debs2013/grandchallenge/RedFIR_2012_1.mov">here</a> (1st half, 1.7 GB) and <a href="http://lafayette.tosm.ttu.edu/debs2013/grandchallenge/RedFIR_2012_2.mov">here</a> (2nd half, 1.7GB). The metadata file that contains player&#8217;s names and associated transmitter ids, detailed field coordinates etc. can be downloaded from: <a href="http://lafayette.tosm.ttu.edu/debs2013/grandchallenge/metadata.txt">here</a> (10 kB). Game interruptions, ball possession statistics, and shots on goal statistics can be downloaded from: <a href="http://lafayette.tosm.ttu.edu/debs2013/grandchallenge/referee-events.tar.gz">here</a> (10 kB). These statistics have been manually created manually and can serve as an aid in validating the respective query results.</p>
 <h4>Queries</h4>
 <p>In the following section we identify a number of queries which need to run concurrently and process the position data. Results of all queries must be returned as a stream of data, unless explicitly stated otherwise.</p>
 <h5>Query 1 &#8211; Running Analysis</h5>
 <p>The goal of this query is to calculate the analysis of the running performance of each of the players currently participating in the game. The intensities are defined as: standing (0-1 km/h), trot (till 11 km/h), low speed run (till 14 km/h), medium speed run (till 17 km/h), high speed run (till 24 km/h), and sprint (faster than 24 km/h). Figure 2 shows the possible transitions between different states which need to be observed for the running analysis.</p>
-<p style="text-align: center;"><br />
-<img src="query1.png" style="width:100%;" alt="Transitions between running intensities for Query 1" /><br/><i>Figure 2 &#8211; Transitions between running intensities for Query 1</i></p>
+<p style="text-align: center;"><br>
+<img src="query1.png" style="width:100%;" alt="Transitions between running intensities for Query 1"><br><i>Figure 2 &#8211; Transitions between running intensities for Query 1</i></p>
 <p>In order to accommodate for the noise in the raw velocity measurements, the actual speed of the run should be computed from all the individual speed norms of a player&#8217;s transmitters. Here you can see an example plot of the velocity of the ball:</p>
-<p style="text-align:center;"><br />
-<img src="ball_velocity.png" style="width:60%" alt="Velocity of the ball over time" /><br/><i>Figure 3 &#8211; Velocity of the ball over time</i></p>
+<p style="text-align:center;"><br>
+<img src="ball_velocity.png" style="width:60%" alt="Velocity of the ball over time"><br><i>Figure 3 &#8211; Velocity of the ball over time</i></p>
 <p>The running analysis query should return two classes of results: (1) current running statistics and (2) a set of aggregate running statistics. The current running statistics should be returned at a frequency of at most 50Hz and must contain following information:</p>
-<p style="text-align:center;"><b><br />
-ts_start, ts_stop, player_id, intensity, distance, speed<br />
+<p style="text-align:center;"><b><br>
+ts_start, ts_stop, player_id, intensity, distance, speed<br>
 </b></p>
 <p>Where ts_start represents the start of the measurement, ts_stop represents the end of the measurement, player_id is the identifier of a player, intensity describes the intensity of the run, distance is the length of the run (in the horizontal plane only) between ts_start and ts_stop, and speed is the average speed of the given intensity run.</p>
 <p>The aggregate running statistics must contain following information:</p>
-<p style="text-align:center;"><b><br />
-ts, player_id, standing_time, standing_distance, trot_time, trot_distance, low_time, low_distance, medium_time, medium_distance, high_time, high_distance, sprint_time, sprint_distance<br />
+<p style="text-align:center;"><b><br>
+ts, player_id, standing_time, standing_distance, trot_time, trot_distance, low_time, low_distance, medium_time, medium_distance, high_time, high_distance, sprint_time, sprint_distance<br>
 </b></p>
 <p>where the ts represent the latest time stamp which updated the statistics, the player_id is the player identifier, xxx_time is the time player spent in the xxx intensity (in milliseconds), xxx_distance is the distance covered with the xxx intensity. The aggregate running statistics must be calculated using four different time windows: 1 minute, 5 minutes, 20 minutes and the whole game duration. Each window must emit an event with the frequency of 50Hz. The result will be four aggregate running statistics streams being returned by the system for each of the required window lengths. Moreover, every running intensity, which has been active for less than a second must be counted on top of the next intensity with a duration longer than 1s. For example, if a player is in a trot state for a longer time, then in a low speed run state for 0.8 seconds, and then in a medium speed run state for a longer time, the time of the low speed run is to be counted on top of the medium speed run.</p>
 <p>Please note that the requirement to count only intensities active for at least one second requires you to delay the output until a reliable measurement has been made.</p>
 <h5>Query 2 &#8211; Ball Possession</h5>
 <p>The goal of this query is to calculate the ball possession for each of the players as well as for whole team. A player (and thereby his respective team) can obtain the ball whenever the ball is in his proximity (less than one meter away &#8211; calculated as the distance between the ball sensor and the closest sensor of the player) and he hits (the ball acceleration peaks) it. The ball will stay in his possession until another player hits it, the ball leaves the field, or the game is stopped. The ball possession is calculated as time between the first ball contact (hit) and the last ball contact (hit). The ball may leave the player proximity and will still stay in his possession.</p>
-<p style="text-align:center;"><br />
-<img src="query2.png" style="width:80%" alt="Ball possession states" /><br/><i>Figure 4 &#8211; Ball possession states</i></p>
+<p style="text-align:center;"><br>
+<img src="query2.png" style="width:80%" alt="Ball possession states"><br><i>Figure 4 &#8211; Ball possession states</i></p>
 <p>A ball is hit if its (transmitter) distance from a player&#8217;s foot (transmitter) is less than 1 meter and its acceleration reaches a value of minimal 55 m/s&amp;sup2. This value depends heavily on the fitness of the players &#8211; values of up to 100 m/s&amp;sup2 are more suitable for professional games. It may be appropriate to apply a mean filter onto the acceleration values in order to get better detection performance.</p>
 <p>The ball position query should return two classes of results: (1) per player ball possession stream and (2) per team ball possession. The per player ball possession stream should contain following information:</p>
-<p style="text-align:center;"><b><br />
-ts, player_id, time, hits<br />
-</b></p><p>where the ts is the latest time stamp of the event which lead to the update of the ball possession, player_id is the player identifier, time is the total time of the ball possession for a given player, and hits is the total number of ball contacts of a given player.<br />
+<p style="text-align:center;"><b><br>
+ts, player_id, time, hits<br>
+</b></p><p>where the ts is the latest time stamp of the event which lead to the update of the ball possession, player_id is the player identifier, time is the total time of the ball possession for a given player, and hits is the total number of ball contacts of a given player.<br>
 The per team ball possession result stream must contain following statistics:</p>
-<p style="text-align:center;"><b><br />
-ts, team_id, time, time_percent<br />
+<p style="text-align:center;"><b><br>
+ts, team_id, time, time_percent<br>
 </b></p><p>where the ts is the latest time stamp of the event which lead to the update of the team&#8217;s ball possession, team_id is the team identifier, time is the total time of the ball possession for a given team, time_percent is a % of the ball possession for a given team w.r.t. the total ball possession time of both teams. The per team ball possession should be calculated using four different time windows: 1 minute, 5 minutes, 20 minutes and the whole game duration. This results in four aggregate ball possession statistics result streams being returned by the system for each of the required window lengths.</p>
 <p>Each statistics streams should be returned with the frequency of maximum 50Hz</p>
 <h5>Query 3 &#8211; Heat Map</h5>
 <p>The goal of this query is to calculate statistics for how long each of the players spent in which region of the field. For this purpose we define a grid with X rows along the x-axis and Y columns along the y-axis of equal size. The parameters X and Y should be implemented with following values 8 and 13 (a grid of 104 cells), 16 and 25, 32 and 50, 64 and 100 (a grid of 6,400 cells), respectively. The system should return results for all parameter settings in parallel but different result streams.</p>
 <p>The system must provide for each cell and each player the percentage of time that the player spent in the respective cell over four different time windows: 1 minute, 5 minutes, 10 minutes and the whole game duration. This results in 16 result streams being returned by the system for each of the required window lengths and parameters for the grid resolution. Each result stream must be updated once per second and contain the following information:</p>
-<p style="text-align:center;"><b><br />
-ts, player_id, cell_x1, cell_y1, cell_x2, cell_y2, percent_time_in_time_cell<br />
+<p style="text-align:center;"><b><br>
+ts, player_id, cell_x1, cell_y1, cell_x2, cell_y2, percent_time_in_time_cell<br>
 </b></p><p>where the ts represent the time stamp of the latest statistics update, the cell_x1, cell_y1, cell_x2, cell_y2 are the coordinates of the lower left and upper right corner of the cell &#8211; respectively, the player_id is the player identifier, percent_time_in_time_cell is the percentage of time that player spent in the cell during the period specific to the result stream (0.00%-100.00%).</p>
 <h5>Query 4 &#8211; Shot on Goal</h5>
 <p>The aim of this query is to detect when a player shoots the ball in an attempt to score a goal. A shot on the goal is defined as any shot that would hit (or closely miss) the goal of the opposing team. Note, that this includes unsuccessful attempts that are e.g. blocked by a player or saved by the goal keeper.</p>
@@ -70,17 +70,17 @@ ts, player_id, cell_x1, cell_y1, cell_x2, cell_y2, percent_time_in_time_cell<br 
 <p>Figure 5 gives an overview of suggested states and transitions of the shot detection. A shot is detected if the player with id &lt;player_id&gt; hits the ball with a minimal acceleration of 55 m/s&amp;sup2, and the projected movement of the ball would cross the opponents&#8217; goal area within 1.5 seconds after the hit. The goal areas are defined as rectangles with the following coordinates:</p>
 <p></p>
 <p><b>Goal area team 1: x &gt; 22578.5 and x &lt; 29898.5, y = 33941.0, z &lt; 2440.0
-<br />
+<br>
 Goal area team 2: x &gt; 22560.0 and x &lt; 29880.0, y = -33968.0, z &lt; 2440.0
 </b></p><p></p>
 <p>Please note that the hit distorts the speed values of the ball. The data are preprocessed by a Kalman-filter and stabilize over time. The computation of the projection may take this into account. To allow for corrective measures we only require that the shot is detected at latest when the ball moved 1m away from the hit location.</p>
 <p>We leave it open in the challenge to which degree the projection considers the physics of a flying ball in the projection. A base-line solution that simply extrapolates the motion vector is acceptable. However, more accurate computations of the ball movement (e.g. considering gravity) would be appreciated.</p>
 <p>For the duration of the shot (i.e. as long as the state &#8220;shot on goal&#8221; in Figure 5 is active) the result stream should be updated with motion values of the ball and the ID of the shooting player:</p>
-<p style="text-align:center;"><b><br />
-ts, player_id, x, y, z, |v|, vx, vy, vz, |a|, ax, ay, az<br />
+<p style="text-align:center;"><b><br>
+ts, player_id, x, y, z, |v|, vx, vy, vz, |a|, ax, ay, az<br>
 </b></p><p>The result stream should be updated with the frequency of the sensor data until an exit condition occurs. Exit conditions are (a) the ball leaves the field, or (c) the direction changes such that the goal area would no longer be hit.</p>
-<p style="text-align:center;"><br />
-<img src="query4.png" style="width:80%" alt="Shot on goal states" /><br/><i>Figure 5 &#8211; Shot on goal states</i></p>
+<p style="text-align:center;"><br>
+<img src="query4.png" style="width:80%" alt="Shot on goal states"><br><i>Figure 5 &#8211; Shot on goal states</i></p>
 <h3>Frequently Asked Questions</h3>
 <p><b>Question 1:</b> The playing field is not a perfect rectangle. Is it allowed to approximate the field with a perfect rectangle in the queries?</p>
 <p>Answer 1: <i>Yes. We suggest to use the following coordinates if you opt for an approximation: (0,33965), (0,-33960),(52483,33965),(52483,-33960)</i></p>
@@ -90,9 +90,9 @@ ts, player_id, x, y, z, |v|, vx, vy, vz, |a|, ax, ay, az<br />
 <p>Answer 3: <i>There has been an error in data description for the first few days after the challenge was published. The correct schema for the sensor stream is following: <b>sid, ts, x, y, z, |v|, |a|, vx, vy, vz, ax, ay, az</b>.</i></p>
 <p><b>Question 4:</b> The heat map should be computed with different parameters for the cell size. How exactly should the listed parameters be combined?</p>
 <p>Answer 4: <i>The combination of parameters show be the following:</i></p>
-<p>8 X 13 &#8211;&gt; 104 cells<br />
-16 X 25 &#8211;&gt; 400 cells<br />
-32 X 50 &#8211;&gt; 1600 cells<br />
+<p>8 X 13 &#8211;&gt; 104 cells<br>
+16 X 25 &#8211;&gt; 400 cells<br>
+32 X 50 &#8211;&gt; 1600 cells<br>
 64 X 100 &#8211;&gt; 6400 cells</p>
 <p><b>Question 5:</b> What are the specifications of the VM that we are supposed to deliver in the end?</p>
 <p>Answer 5: <i>We only need a vmdk file &#8211; we will specify the VM parameters ourselves. They will be identical for all participants. The minimum parameters will be: 4 cores (@2.8 GHz), 4 GB RAM, SSD HDD, and 1GB Ethernet. The VM will be used for both testing of the throughput and correctness. Please note that the provisioning of the VM is on a voluntary basis and is only necessary for those who want to be included in the final ranking. Specifically it does not influence your chances of getting accepted into the main event.</i></p>
@@ -103,15 +103,15 @@ ts, player_id, x, y, z, |v|, vx, vy, vz, |a|, ax, ay, az<br />
 <p><b>Question 8:</b> Each sensor event has a timestamp. Is it required to time the data replay according to this timestamp?</p>
 <p>Answer 8: <i>It is okay to ignore the timestamp for replaying the data. However, the query results must be in accordance with the timestamp in the data (e.g. length of temporal windows).</i></p>
 <p><b>Question 9:</b> What are the exact start and end times for the two halves of the game?</p>
-<p>Answer 9: <i><br />
-1st Half:<br />
-Start of Game: 10753295594424116<br />
-End of Game: 12557295594424116<br />
+<p>Answer 9: <i><br>
+1st Half:<br>
+Start of Game: 10753295594424116<br>
+End of Game: 12557295594424116<br>
 Without Ball: 12398************</i></p>
-<p>2nd Half:<br />
-Start of Game: 13086639146403495<br />
+<p>2nd Half:<br>
+Start of Game: 13086639146403495<br>
 End of Game: 14879639146403495</p>
-<p>Towards the end of the 1st half we had technical issues with the locating system so that the last 2.5 minutes are without the active ball transmitter (see without ball above). Hence, the shot on goal and ball possession query cannot produce valuable information for that<br />
+<p>Towards the end of the 1st half we had technical issues with the locating system so that the last 2.5 minutes are without the active ball transmitter (see without ball above). Hence, the shot on goal and ball possession query cannot produce valuable information for that<br>
 time.</p>
 <p><b>Question 10:</b> How often should the result streams be updated?</p>
 <p>Answer 10: <i>unless explicitly stated otherwise, each result stream must be updated for every input event.</i></p>

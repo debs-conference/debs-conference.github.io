@@ -4,34 +4,34 @@ title: "DEBS 2011 Grand Challenge: Social game"
 ---
 <p style="text-align: justify;">The overall objective of the Challenge is to promote the research and development in the Event Processing area by:</p>
 <ul>
-<li style="text-align: justify;">Enabling R&amp;D groups (research and industry ones) and software vendors to demonstrate the strength of their results and;<br />
+<li style="text-align: justify;">Enabling R&amp;D groups (research and industry ones) and software vendors to demonstrate the strength of their results and;<br>
 </li>
-<li style="text-align: justify;">Creating awareness in the broader community of the potential of the event-processing paradigm for developing various, challenging real-world applications.<br />
+<li style="text-align: justify;">Creating awareness in the broader community of the potential of the event-processing paradigm for developing various, challenging real-world applications.<br>
 </li>
 </ul>
-<p>Therefore, the Challenge is oriented toward developing new event-based solutions for a challenging problem, that will be evaluated properly and the results will be disseminated in the broader community.<br />
-This year the Challenge is related to the realization of a system the Trivia Geeks Club (described below) and optionally to providing some creative extensions of it.<br />
-The Challenge consists of two competitive tracks and one non-competitive track.<br />
+<p>Therefore, the Challenge is oriented toward developing new event-based solutions for a challenging problem, that will be evaluated properly and the results will be disseminated in the broader community.<br>
+This year the Challenge is related to the realization of a system the Trivia Geeks Club (described below) and optionally to providing some creative extensions of it.<br>
+The Challenge consists of two competitive tracks and one non-competitive track.<br>
 The competitive tracks are:</p>
 <ul>
-<li style="text-align: justify;">Basic: satisfying the enclosed specification;<br />
+<li style="text-align: justify;">Basic: satisfying the enclosed specification;<br>
 </li>
-<li style="text-align: justify;">Extended: extending the scenario with capabilities that demonstrate novel functional or non-functional capabilities selected by the competitors.<br />
+<li style="text-align: justify;">Extended: extending the scenario with capabilities that demonstrate novel functional or non-functional capabilities selected by the competitors.<br>
 </li>
 </ul>
-<p>All competitors will participate in the basic track; in addition a competitor can chose to participate in the extended track.<br />
-The non competitive track has the same ground rules (should satisfy the basic scenario, and may include extensions) and is intended for those who wish to present their solutions in DEBS 2011, but not participate in the competition.<br />
+<p>All competitors will participate in the basic track; in addition a competitor can chose to participate in the extended track.<br>
+The non competitive track has the same ground rules (should satisfy the basic scenario, and may include extensions) and is intended for those who wish to present their solutions in DEBS 2011, but not participate in the competition.<br>
 The competition is completely open for both research and commercial solutions.</p>
 <h3><strong>Trivia Geeks Club: A Social Game</strong></h3>
 <p><i>This specification has to be fully implemented using event processing functions, without reading or writing from a database.</i></p>
-<p><b>Trivia Geeks Club</b> is a game that is played within a social network group. A trivia question is being asked approximately every 30 seconds throughout the day (24 hours), one can answer the question until the next question is being asked. The question is a trivia question with four possible answers, a person may answer the question directly, or ask to receive the most frequent answer among the group so far and then answer.<br />
+<p><b>Trivia Geeks Club</b> is a game that is played within a social network group. A trivia question is being asked approximately every 30 seconds throughout the day (24 hours), one can answer the question until the next question is being asked. The question is a trivia question with four possible answers, a person may answer the question directly, or ask to receive the most frequent answer among the group so far and then answer.<br>
 The following rules apply for the game:</p>
 <ol>
 <li>It is possible to do an annulment of the answer within ten sec of giving an answer, but only within 30sec that a question is valid in;</li>
 <li>The official time is client time and the system should be able to process &#8220;late&#8221; answers (the players have to install client program that takes the time from a shared time server);</li>
 <li>In order to make the game more interesting, the system should be able to change a predefined scoring rule (see later), this change is triggered by a control event.</li>
 </ol>
-<p>As a part of the Extended Track, the presented system can be extended with additional functionalities that prove novel functional or non-functional capabilities. The system can be upgraded in an arbitrary way. An example is to enable reactivity of the system by supporting different types of monitoring alarms. Additionally, different supporting technologies can be introduced, e.g. semantics, NLP technologies (by extending, the list of questions), for dealing with probability or security issues.<br />
+<p>As a part of the Extended Track, the presented system can be extended with additional functionalities that prove novel functional or non-functional capabilities. The system can be upgraded in an arbitrary way. An example is to enable reactivity of the system by supporting different types of monitoring alarms. Additionally, different supporting technologies can be introduced, e.g. semantics, NLP technologies (by extending, the list of questions), for dealing with probability or security issues.<br>
 Evaluation of the solution will be performed in both categories as follows:</p>
 <h4><strong>Basic:</strong></h4>
 <ul>
@@ -41,7 +41,7 @@ Evaluation of the solution will be performed in both categories as follows:</p>
 </ul>
 <h4><strong>Extended:</strong></h4>
 <p>The criteria will be based on the creativity and benefits of the solution.</p>
-<p>Format for the evaluation data will be published soon on this web page.<br />
+<p>Format for the evaluation data will be published soon on this web page.<br>
 Evaluation will be performed by the Evaluation committee.</p>
 <h4><strong>Scenario specification</strong></h4>
 <p style="text-align: justify;">There are three event producers:</p>
@@ -110,7 +110,7 @@ Evaluation will be performed by the Evaluation committee.</p>
 </tr>
 </tbody>
 </table>
-<p>*: each correct answer is counted towards a single bonus of the same type and cannot be counted twice.<br />
+<p>*: each correct answer is counted towards a single bonus of the same type and cannot be counted twice.<br>
 **: If there are several players that are tied in one of the &#8220;best&#8221; categories, each of them receives the bonus of 1000 points.</p>
 <p>The score is kept online and the scoreboard is constantly updated whenever a point increase/decrease event is derived.</p>
 <p>The monthly bonus for most appearances is calculated once a month, at the end of the day of the last day of the month, after calculating the bonus the best player(s) of the month are selected and share a $1M prize; the scoring starts every month from zero (the bonus for best weekly score, when the week spans over months are counted in the month in which the week ends).</p>

@@ -6,15 +6,15 @@ title: "DEBS 2014 Grand Challenge: Smart homes"
 <p>With this year’s challenge, we seek to demonstrate the applicability of event-based systems to provide scalable, real-time analytics over high volume sensor data. The underlying scenario stems from the smart grid domain and addresses the analysis of energy consumption measurements. Specifically, we target following problems: (1) short-term load forecasting and (2) load statistics for real-time demand management. The data for the challenge is synthesized based on real-world profiles. The profiles have been collected from a number of smart-home installations deployed in Germany.</p>
 <h3>Data</h3>
 <p>The Grand Challenge 2014 data set is based on recordings originating from smart plugs, which are deployed in private households. A smart plug plays a role of a proxy between the wall power outlet and the device connected to it. It is equipped with a range of sensors which measure different, power consumption related, values. For the purpose of the DEBS 2014 Grand Challenge a number of smart plugs has been deployed in private households with data being collected roughly every second for each sensor in each smart plug. It has to be noted that the data set is collected in an uncontrolled, real-world environment, which implies the possibility of malformed data as well as missing measurements.</p>
-<p>For the DEBS 2014 Grand Challenge we assume a hierarchical structure with a house, identified by a unique house id, being the topmost entity. Every house contains one or more households, identified by a unique household id (within a house). Every household contains one or more smart plugs, each identified by a unique plug id (within a household). Every smart plug contains exactly two sensors:<br />
+<p>For the DEBS 2014 Grand Challenge we assume a hierarchical structure with a house, identified by a unique house id, being the topmost entity. Every house contains one or more households, identified by a unique household id (within a house). Every household contains one or more smart plugs, each identified by a unique plug id (within a household). Every smart plug contains exactly two sensors:<br>
 (1) load sensor measuring current load with Watt as unit (2) work sensor measuring total accumulated work since the start (or reset) of the sensor with kWh as unit.</p>
 <p>The schema of the base stream is following:</p>
-<p><strong>id</strong> – a unique identifier of the measurement [32 bit unsigned integer value]<br />
-<strong>timestamp</strong> – timestamp of measurement (number of seconds since January 1, 1970, 00:00:00 GMT) [32 bit unsigned integer value]<br />
-<strong>value</strong> – the measurement [32 bit floating point]<br />
-<strong>property</strong> &#8211; type of the measurement: 0 for work or 1 for load [boolean]<br />
-<strong>plug_id</strong> – a unique identifier (within a household) of the smart plug [32 bit unsigned integer value]<br />
-<strong>household_id</strong> &#8211; a unique identifier of a household (within a house) where the plug is located [32 bit unsigned integer value]<br />
+<p><strong>id</strong> – a unique identifier of the measurement [32 bit unsigned integer value]<br>
+<strong>timestamp</strong> – timestamp of measurement (number of seconds since January 1, 1970, 00:00:00 GMT) [32 bit unsigned integer value]<br>
+<strong>value</strong> – the measurement [32 bit floating point]<br>
+<strong>property</strong> &#8211; type of the measurement: 0 for work or 1 for load [boolean]<br>
+<strong>plug_id</strong> – a unique identifier (within a household) of the smart plug [32 bit unsigned integer value]<br>
+<strong>household_id</strong> &#8211; a unique identifier of a household (within a house) where the plug is located [32 bit unsigned integer value]<br>
 <strong>house_id</strong> &#8211; a unique identifier of a house where the household with the plug is located [32 bit unsigned integer value]</p>
 <p dir="ltr">Comma separated snapshot of the data:</p>
 <pre>2967740693,1379879533,82.042,0,1,0,12
@@ -28,7 +28,7 @@ title: "DEBS 2014 Grand Challenge: Smart homes"
 2967740701,1379879533,0,1,3,2,12</pre>
 <p>The synthesized data file contains over 4055 Millions of measurements for 2125 plugs distributed across 40 houses. The collected measurements cover a period of one month with the first timestamp equal to 1377986401 (Sept. 1st, 2013, 00:00:00) and the last timestamp equal to 1380578399 (Sept. 30th, 2013, 23:59:59). All events in the data file are sorted by the timestamp value. Events with the same timestamp are ordered randomly with respect to each other.</p>
 <p>Work values are cumulative. The resolution of the work values is only 1 kWh and a change in only visible when enough measurements have accumulated. Therefore, load values are better suited for capturing smaller amounts of used energy. Below figure, shows the load and work charts for a plug during the same time interval. The load chart shows an increase from 200W to 250W between 15:36:02 and 15:36:24. This is not visible in the work chart as the resolution is too small to reflect this change. Work values are calculated even if the data transmission is interrupted. Therefore, below figure shows a jump in the work values after the data gap between 9/20/2013 15:36:31 and 9/21/2013 19:03:40 although no load measurements are available during this period.</p>
-<p><img title="Figure 1 - Load and work values for a single plug" alt="" src="pngbase649ea2e0eb7b738e0b.png" style="width:624px;height:239px;" /></p>
+<p><img title="Figure 1 - Load and work values for a single plug" alt="" src="pngbase649ea2e0eb7b738e0b.png" style="width:624px;height:239px;"></p>
 <p>Data must be consumed in a streaming fashion. This means that the system processing currently an event with timestamp ts can only work with events with timestamps smaller or equal to ts, .i.e., those it has already seen. Specifically, no precomputation based on the whole data set must be made.</p>
 <p>A <a href="http://www.doc.ic.ac.uk/~mweidlic/sorted.csv.gz" target="_blank">small (approx. 500MB) test file is available under this link</a>. It contains 100 million events for the first 16 hours. The complete data file is available upon explicit request via an FTP server. In order to obtain the data file please first<a title="DEBS Easychair Submission Page" href="http://debs.org/web/20150215092103/https://www.easychair.org/conferences/?conf=debs2014" target="_blank"> register your abstract with the EasyChair</a> and subsequently contact us at Zbigniew.Jerzak_at_sap.com to obtain the URI and credentials. The sha1sum of the full data file is: f1cb3fc60604f6c8abde7fbc21a0f59f7a510add</p>
 <h3>Query 1 &#8211; Load Prediction</h3>
@@ -44,36 +44,36 @@ title: "DEBS 2014 Grand Challenge: Smart homes"
 <p>L(s_{i+2}) = ( 8 + median( 9, 3, 7 ) ) / 2 = 7.5</p>
 <p>The above example assumes that the first event has a timestamp of Monday 00:00. Hence the index i of the current slice s_i (Thursday 00:15:00 till 00:30:00) equals 3*96+1 = 289. Index of slice i+2 (Thursday 00:45:00 till 01:00:00) equals 291. The set {s_j} equals hence {s_195, s_99, s_3} since s_195=s_(291-1*96), s_99=s_(291-2*96), and s_3=s_(291-3*96). s_195 corresponds to Wednesday 00:45:00 till 01:00:00. s_99 corresponds to Tuesday 00:45:00 till 01:00:00 and s_3 corresponds to Monday 00:45:00 till 01:00:00.</p>
 <p>The load prediction query must provide prediction values for both (1) houses and (2) individual plugs. For each house and plug a prediction using a different slice sizes should be calculated. Slice sizes to consider are 1min, 5min, 15min, 60min and 120min. The output streams for house-based prediction values should adhere to the following schema:</p>
-<p><strong>ts</strong> – timestamp of the starting time of the slice that the prediction is made for<br />
-<strong>house_id</strong> – id of the house for which the prediction is made<br />
+<p><strong>ts</strong> – timestamp of the starting time of the slice that the prediction is made for<br>
+<strong>house_id</strong> – id of the house for which the prediction is made<br>
 <strong>predicted_load</strong> – the predicted load for the time slice starting at ts</p>
 <p>The output streams for plug-based prediction values should contain the following information:</p>
-<p><strong>ts</strong> – timestamp of the starting time of the slice that the prediction is made for<br />
-<strong>house_id</strong> – id of the house for where the plug is located<br />
-<strong>household_id</strong> – the id of the household where the plug is located<br />
-<strong>plug_id</strong> – the id of the plug for which the prediction is made<br />
+<p><strong>ts</strong> – timestamp of the starting time of the slice that the prediction is made for<br>
+<strong>house_id</strong> – id of the house for where the plug is located<br>
+<strong>household_id</strong> – the id of the household where the plug is located<br>
+<strong>plug_id</strong> – the id of the plug for which the prediction is made<br>
 <strong>predicted_load</strong> – the predicted load for the time slice starting at ts</p>
 <p>The output streams should be updated every 30 seconds as specified by the input event timestamp. The purpose of the update is to reflect the latest value of the avgLoad(s_i) for the given slice.</p>
 <h3>Query 2 &#8211; Outliers</h3>
 <p>The goal of the outliers query is to find the outliers as far as the energy consumption levels are concerned. The query should answer the following question: for each house calculate the percentage of plugs which have a median load during the last hour greater than the median load of all plugs (in all households of all houses) during the last hour. The load statistics query should generate two output streams, one for a sliding window of one hour (described above) and one for a sliding window of a whole day (24 hours). The size of the window should be determined by the timestamp (ts) contained in every event. The slide of the window is equal to one second. The value of the aggregation should be re-calculated whenever a new event enters or leaves a sliding window.</p>
 <p>The output streams should adhere to the following schema:</p>
-<p><strong>ts_start</strong> &#8211; timestamp indicating the start of the window<br />
-<strong>ts_stop</strong> &#8211; timestamp indicating the end of the window<br />
-<strong>house_id</strong> &#8211; the id of the house for which the calculation was done<br />
-<strong>percentage</strong> &#8211; the percentage of plugs in this house having their median load higher than global median<strong><br />
+<p><strong>ts_start</strong> &#8211; timestamp indicating the start of the window<br>
+<strong>ts_stop</strong> &#8211; timestamp indicating the end of the window<br>
+<strong>house_id</strong> &#8211; the id of the house for which the calculation was done<br>
+<strong>percentage</strong> &#8211; the percentage of plugs in this house having their median load higher than global median<strong><br>
 </strong></p>
 <p>An output should be produced only when the percentage value changes for any of the houses. Specifically, no new output needs to be produced when the median load of all plugs changes but no new plugs move below or above the global median load.</p>
 <h3>Implementation and Evaluation</h3>
-<p>Each Grand Challenge solution must include an evaluation section. The evaluation section should investigate following aspects of the proposed solution:<br />
-(1) Per query throughput as a function of the workload for 10, 20, and 40 houses (average, 10th and 90th percentile)<br />
-(2) Per query latency as a function of the workload for 10, 20, and 40 houses (average, 10th and 90th percentile)<br />
+<p>Each Grand Challenge solution must include an evaluation section. The evaluation section should investigate following aspects of the proposed solution:<br>
+(1) Per query throughput as a function of the workload for 10, 20, and 40 houses (average, 10th and 90th percentile)<br>
+(2) Per query latency as a function of the workload for 10, 20, and 40 houses (average, 10th and 90th percentile)<br>
 (3) For distributed systems &#8211; per query throughput and latency as function of the number of processing nodes</p>
 <p>Please note that evaluation should explicitly focus on providing these relative values, i.e., throughput for 10 houses as compared to the throughput for 20 houses. Specifically, the absolute throughput and latency values are of minor importance only and will be used only as a sanity check against the baseline.</p>
 <p>The original data file can be pre-processed and split into three separate input files containing 10, 20, and 40 houses. The 10 house data file should contain houses with ids from 0 till 9, and the 20 house data file should contain houses with ids from 0 till 19. Authors are furthermore explicitly encouraged to emphasize following aspects of their solutions: (1) the training and execution of the prediction model and (2) handling of potential data quality issues.</p>
 <h3>Submission Information</h3>
 <p>All DEBS 2014 Grand Challenge submissions must be composed of two parts: (1) a 6 page paper, in ACM SIG proceedings format, outlining the solution, highlighting its innovative aspects and presenting the evaluation and (2) a demonstration of the system &#8211; either in the form of a video or a screencast. All submissions are subject to a peer review process. Based on the review process a submission can be either accept or rejected. All accepted submissions will be divided in two groups. Top accepted submissions (group one) will be published in the conference proceedings and will be presented during a special Grand Challenge session. All accepted submissions (group one and two) will be invited to present the solution as a poster/demo during the DEBS 2014 Conference.</p>
 <p>Unless explicitly declined by the authors, all solutions will be included in the global ranking with the winner of the Grand Challenge being announced and awarded during the conference banquet. The global ranking is based on the peer review process scores and the non-functional properties of the solution. The considered non-functional properties are: scalability, throughput, and latency of the system under the assumption of result correctness. The submission process is divided into two steps:</p>
-<p><strong>Step 1</strong> &#8211; until February 1st, 2014 &#8211; submission of non-binding intent for participation. The goal of this submission is to initiate the contact between the DEBS Challenge organizers and solution authors. Registered authors will be proactively notified about any questions and resulting changes to the Grand Challenge description. The submission of the intent should be done via EasyChair (abstract submission).<br />
+<p><strong>Step 1</strong> &#8211; until February 1st, 2014 &#8211; submission of non-binding intent for participation. The goal of this submission is to initiate the contact between the DEBS Challenge organizers and solution authors. Registered authors will be proactively notified about any questions and resulting changes to the Grand Challenge description. The submission of the intent should be done via EasyChair (abstract submission).<br>
 <strong>Step 2</strong> &#8211; until March 7th, 2014 &#8211; submission of the final solution</p>
 <p>DEBS Challenge participants are encouraged to contact Challenge organizers with questions and suggestions regarding the problem. Main contact points for are: Zbigniew Jerzak (Zbigniew.Jerzak_at_sap.com) and Holger Ziekow (hziekow_at_agtinternational.com). All questions and answers will be made available online on the DEBS Challenge website.</p>
 <p>All submissions are to be made via EasyChair system: <a href="http://debs.org/web/20150215092103/https://www.easychair.org/conferences/?conf=debs2014" target="_blank">https://www.easychair.org/conferences/?conf=debs2014</a> in the Grand Challenge track.</p>
@@ -91,21 +91,21 @@ title: "DEBS 2014 Grand Challenge: Smart homes"
 <p>2014.01.14 &#8211; Updated description and result schema of Query 2</p>
 <h3>Q&amp;A</h3>
 <ol>
-<li>Query 2 &#8211; How are both windows (for one hour and for a whole day) computed? More precisely, are both windows sliding or tumbling?<br />
+<li>Query 2 &#8211; How are both windows (for one hour and for a whole day) computed? More precisely, are both windows sliding or tumbling?<br>
 Both windows are to be considered as sliding windows with the window span determined by the timestamp field (ts) in the input data.</li>
-<li>Query 2 &#8211; How often should sliding window produce a result?<br />
+<li>Query 2 &#8211; How often should sliding window produce a result?<br>
 Each sliding window should update its result whenever the value of the calculated aggregation changes, i.e., usually upon the reception of every input event.</li>
-<li>Query 1 &#8211; how should the prediction of the load value be updated?<br />
+<li>Query 1 &#8211; how should the prediction of the load value be updated?<br>
 Please note that the load prediction equation contains two terms. The current average load value avgLoad(s_i)  and the historical value obtained from the model median( { avgLoad(s_j) } ). While the model-based value stays constant the current average changes with every new event entering the slice s_i. Therefore, the load prediction value should be updated with every new event entering the slice s_i.</li>
 </ol>
 <h3>Grand Challenge co-Chairs</h3>
-<p>Zbigniew Jerzak, SAP AG<br />
+<p>Zbigniew Jerzak, SAP AG<br>
 Holger Ziekow, AGT International</p>
 <h3>Grand Challenge Technical Program Committee</h3>
-<p>Mauricio Arango &#8211; Oracle, USA<br />
-Thomas Heinze &#8211; SAP AG, Germany<br />
-Helge Parzyjegla &#8211; University of Rostock, Germany<br />
-Leonardo Querzoni &#8211; Universit degli Studi di Roma &#8220;La Sapienza&#8221;, Italy<br />
-Etienne Rivière &#8211; University of Neuchatel, Switzerland<br />
-Marco Serafini, QCRI &#8211; Qatar Foundation, Qatar<br />
+<p>Mauricio Arango &#8211; Oracle, USA<br>
+Thomas Heinze &#8211; SAP AG, Germany<br>
+Helge Parzyjegla &#8211; University of Rostock, Germany<br>
+Leonardo Querzoni &#8211; Universit degli Studi di Roma &#8220;La Sapienza&#8221;, Italy<br>
+Etienne Rivière &#8211; University of Neuchatel, Switzerland<br>
+Marco Serafini, QCRI &#8211; Qatar Foundation, Qatar<br>
 Matthias Weidlich &#8211; Imperial College London, UK</p>
