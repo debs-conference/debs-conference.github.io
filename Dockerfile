@@ -15,7 +15,7 @@ RUN bundle install
 
 WORKDIR /workspace
 
-EXPOSE 4000
+EXPOSE 4001
 EXPOSE 35729
 
-CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--livereload"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0","--port", "4001", "--livereload"]
