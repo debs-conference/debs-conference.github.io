@@ -25,6 +25,7 @@ title: Steering Committee
 - <a href="http://www.matthiasweidlich.com/">Matthias Weidlich</a>, Humboldt-Universität zu Berlin, Germany
 - <a href="https://www.etsmtl.ca/programmes-et-formations/corps-enseignant/kzhang">Kaiwen Zhang</a>, ÉTS Montréal, Canada
 - <a href="https://ylzhou.github.io">Yongluan Zhou</a>, University of Copenhagen, Denmark
+- <a href="http://members.unine.ch/pascal.felber/index.html">Pascal Felber</a>, University of Neuchâtel, Switzerland
 
 <h2 id="Former_Members">Former Members</h2>
 - <a href="http://www.pms.ifi.lmu.de/mitarbeiter/derzeitige/francois-bry/">Francois Bry</a>, Ludwig-Maximilians-Universität München, Germany
