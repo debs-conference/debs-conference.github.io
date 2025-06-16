@@ -3,7 +3,6 @@ layout: default
 title: Steering Committee
 ---
 <h2 id="DEBS_Steering_Committee">Current Members</h2>
-- <a href="http://www.cl.cam.ac.uk/~jmb25/index.html">Jean M. Bacon</a>, University of Cambridge, U.K.
 - <a href="http://www.dis.uniroma1.it/~baldoni/">Roberto Baldoni</a>, Sapienza Università di Roma, Italy
 - <a href="http://cse.uta.edu/faculty/details/?id=43">Sharma Chakravarthy</a>, University of Texas, Arlington, U.S.
 - <a href="https://www.microsoft.com/en-us/research/people/badrishc/">Badrish Chandramouli</a>, Microsoft Research, U.S.
@@ -26,8 +25,10 @@ title: Steering Committee
 - <a href="https://www.etsmtl.ca/programmes-et-formations/corps-enseignant/kzhang">Kaiwen Zhang</a>, ÉTS Montréal, Canada
 - <a href="https://ylzhou.github.io">Yongluan Zhou</a>, University of Copenhagen, Denmark
 - <a href="http://members.unine.ch/pascal.felber/index.html">Pascal Felber</a>, University of Neuchâtel, Switzerland
+- <a href="https://www.riccardotommasini.com/">Riccardo Tommasini</a>, Institut National des Sciences Appliquées de Lyon, France
 
 <h2 id="Former_Members">Former Members</h2>
+- <a href="http://www.cl.cam.ac.uk/~jmb25/index.html">Jean M. Bacon</a>, University of Cambridge, U.K.
 - <a href="http://www.pms.ifi.lmu.de/mitarbeiter/derzeitige/francois-bry/">Francois Bry</a>, Ludwig-Maximilians-Universität München, Germany
 - <a href="http://www.dvs1.informatik.tu-darmstadt.de/staff/buchmann/">Alejandro P. Buchmann</a>, Darmstadt University of Technology, Germany
 - <a href="http://serl.cs.colorado.edu/~carzanig/">Antonio Carzaniga</a>, University of Lugano, Switzerland
