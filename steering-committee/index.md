@@ -3,8 +3,8 @@ layout: default
 title: Steering Committee
 ---
 <h2 id="DEBS_Steering_Committee">Current Members</h2>
-- <a href="http://www.ce.uniroma2.it/~valeria/">Valeria Cardellini,</a>, Università di Roma Tor Vergata, Italy
-- <a href="https://www.kth.se/profile/parisc">Paris Carbone,</a>, KTH Royal Institute of Technology, Sweden
+- <a href="http://www.ce.uniroma2.it/~valeria/">Valeria Cardellini</a>, Università di Roma Tor Vergata, Italy
+- <a href="https://www.kth.se/profile/parisc">Paris Carbone</a>, KTH Royal Institute of Technology, Sweden
 - <a href="http://cse.uta.edu/faculty/details/?id=43">Sharma Chakravarthy</a>, University of Texas, Arlington, U.S.
 - <a href="https://www.otago.ac.nz/computer-science/people/David_Eyers.html">David Eyers</a>, University of Otago, New Zealand
 - <a href="http://members.unine.ch/pascal.felber/index.html">Pascal Felber</a>, University of Neuchâtel, Switzerland
@@ -37,7 +37,7 @@ title: Steering Committee
 - <a href="http://www.cs.brown.edu/~ugur/">Ugur Cetintemel</a>, Brown University, U.S. (until 2013)
 - <a href="https://engineering.nd.edu/profiles/jcleland-huang">Jane Cleland-Huang</a>, University of Notre Dame, U.S.
 - <a href="http://people.cis.ksu.edu/~dwyer/">Matthew Dwyer</a>, University of Nebraska. U.S., <em><strong>ACM SIGSOFT Liaison </strong></em>
-- <a href="https://folk.uio.no/frank/">Frank Eliassen</a>, University of Oslo
+- <a href="https://folk.uio.no/frank/">Frank Eliassen</a>, University of Oslo, Norway
 - <a href="https://researcher.ibm.com/researcher/view.php?person=il-OPHER">Opher Etzion</a>, IBM Haifa Research Lab, Israel
 - <a href="https://www.cs.purdue.edu/homes/peugster/">Patrick Eugster</a>, Purdue University, U.S.
 - <a href="http://tu-dresden.de/die_tu_dresden/fakultaeten/fakultaet_informatik/sysa/se/team/people/c_fetzer">Christof Fetzer</a>, Technische Universität Dresden, Germany
@@ -52,5 +52,5 @@ title: Steering Committee
 - Rob Strom, IBM Thomas J. Watson Research Center, U.S.
 - <a href="http://redwood.cs.ttu.edu/~suurban/Home.html">Susan Urban</a>, Texas Tech University, U.S.
 - <a href="https://www.ics.uci.edu/~nalini/">Nalini Venkatasubramanian</a>, University of California, Irvine, U.S.
-- <a href="http://folk.uio.no/romanvi/">Roman Vitenberg</a>, University of Oslo
+- <a href="http://folk.uio.no/romanvi/">Roman Vitenberg</a>, University of Oslo, Norway
 - <a href="http://www.cs.brown.edu/~sbz/">Stan Zdonik</a>, Brown University, U.S. (until 2013)
