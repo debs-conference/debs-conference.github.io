@@ -3,7 +3,7 @@ layout: default
 title: Conferences
 ---
 ## DEBS Conferences
-- The 20th ACM International [DEBS Conference on Distributed and Event-based Systems](https://2026.debs.org/), June 23rd &#8211; June 26rd, 2026, Lisbon, Portugal
+- The 20th ACM International [DEBS Conference on Distributed and Event-based Systems](https://2026.debs.org/), June 23rd &#8211; June 26th, 2026, Lisbon, Portugal
 - The 19th ACM International [DEBS Conference on Distributed and Event-based Systems](https://2025.debs.org/), June 10th &#8211; June 13th, 2025, Gothenburg, Sweden
 - The 18th ACM International [DEBS Conference on Distributed and Event-based Systems](https://2024.debs.org/), June 25th &#8211; June 28th, 2024, Lyon, France
 - The 17th ACM International [DEBS Conference on Distributed and Event-based Systems](https://2023.debs.org/), June 27th &#8211; June 30th, 2023, Neuchâtel, Switzerland
