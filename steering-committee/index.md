@@ -10,22 +10,26 @@ title: Steering Committee
 - <a href="http://members.unine.ch/pascal.felber/index.html">Pascal Felber</a>, University of Neuchâtel, Switzerland
 - <a href="http://www.cs.technion.ac.il/~roy/">Roy Friedman</a>, Technion, Israel
 - <a href="http://ie.technion.ac.il/~avigal/">Avigdor Gal</a>, Technion, Israel
-- <a href="https://vincenzogulisano.com/">Vincenzo Gulisano</a>, Chalmers University of Technology, Sweden
+- <a href="https://vincenzogulisano.com/">Vincenzo Gulisano</a>, Chalmers University of Technology, Sweden, <em><strong>Vice-Steering Committee Chair </strong></em>
 - <a href="https://www.cms.waikato.ac.nz/people/hinze">Annika Hinze</a>, University of Waikato, New Zealand
 - <a href="http://www.eecg.toronto.edu/~jacobsen/">Hans-Arno Jacobsen</a>, University of Toronto, Canada
 - <a href="http://www.cs.aueb.gr/~vana/">Vana Kalogeraki</a>, Athens University of Economics and Business, Greece
-- <a href="https://www.rug.nl/staff/b.koldehofe/">Boris Koldehofe</a>, TU Ilmenau, Germany, <em><strong>Steering Committee Chair </strong></em>
-- <a href="https://www.chalmers.se/en/persons/ptrianta/?tab=0">Marina Papatriantafilou,</a>, Centre National de la Recherche Scientifique, France
+- <a href="https://www.rug.nl/staff/b.koldehofe/">Boris Koldehofe</a>, Marburg University, Germany, <em><strong>Steering Committee Chair </strong></em>
+- <a href="https://www.chalmers.se/en/persons/ptrianta/?tab=0">Marina Papatriantafilou,</a>, Chalmers University of Technology, Sweden
 - <a href="http://www.doc.ic.ac.uk/~peter/">Peter R. Pietzuch</a>, Imperial College London, U.K.
 - <a href="https://www.diag.uniroma1.it/querzoni/">Leonardo Querzoni</a>, Sapienza University of Rome, Italy
-- <a href="https://hpi.de/rabl/team/prof-dr-tilmann-rabl.html">Tilmann Rabl</a>, University of Potsdam, Germany
+- <a href="https://hpi.de/rabl/team/prof-dr-tilmann-rabl.html">Tilmann Rabl</a>, Hasso Plattner Institute, Germany
 - <a href="https://cloudlargescale-uclouvain.github.io/Etienne_Riviere">Etienne Rivière</a>, UCLouvain, Belgium
 - <a href="https://members.unine.ch/valerio.schiavoni/">Valerio Schiavoni</a>, Université de Neuchâtel, Switzerland
 - <a href="https://www.riccardotommasini.com/">Riccardo Tommasini</a>, Institut National des Sciences Appliquées de Lyon, France
 - <a href="http://vargas-solar.com/">Genoveva Vargas Solar</a>, Centre National de la Recherche Scientifique, France
-- <a href="http://www.matthiasweidlich.com/">Matthias Weidlich</a>, Humboldt-Universität zu Berlin, Germany
+- <a href="https://hpi.de/en/database-group/people/matthias-weidlich">Matthias Weidlich</a>, Hasso Plattner Institute, Germany
 - <a href="https://www.etsmtl.ca/programmes-et-formations/corps-enseignant/kzhang">Kaiwen Zhang</a>, ÉTS Montréal, Canada
 - <a href="https://ylzhou.github.io">Yongluan Zhou</a>, University of Copenhagen, Denmark
+- <a href="https://ciencias.ulisboa.pt/pt/perfil/hamiranda">Hugo Miranda</a>, CIÊNCIAS ULisboa, Portugal
+- <a href="https://ruben-mayer.com">Ruben Mayer</a>, University of Bayreuth, Germany
+- <a href="https://www.cs.uni-potsdam.de/~bhowmik">Sukanya Bhowmik</a>, University of Potsdam, Germany 
+
 
 <h2 id="Former_Members">Former Members</h2>
 - <a href="http://www.cl.cam.ac.uk/~jmb25/index.html">Jean M. Bacon</a>, University of Cambridge, U.K.
